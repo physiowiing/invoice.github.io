@@ -30,7 +30,30 @@
 <body class="bg-gray-100 p-5">
 
     <div class="max-w-3xl mx-auto bg-white p-6 shadow-lg">
-        <button onclick="window.print()" class="bg-green-500 text-white p-2 rounded mb-6">Download PDF</button>
+<!--         <button onclick="window.print()" class="bg-green-500 text-white p-2 rounded mb-6">Download PDF</button> -->
+<button onclick="downloadPDF()" 
+        class="bg-green-500 text-white p-2 rounded mb-6">
+    Download PDF
+</button>
+
+<!-- html2pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+function downloadPDF() {
+    const element = document.getElementById('invoice');
+    
+    const opt = {
+        margin:       [0.2, 0.2, 0.2, 0.2], // top, left, bottom, right (inch)
+        filename:     'invoice.pdf',
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { scale: 3, useCORS: true }, // High quality render
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(element).save();
+}
+</script>
 
         <div id="invoice">
 
@@ -150,4 +173,5 @@
 </body>
 
 </html>
+
 
