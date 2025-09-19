@@ -154,26 +154,29 @@
         }
     </script>
 <!-- html2pdf.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script> -->
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
 function downloadPDF() {
-    const element = document.getElementById('invoice');
-    
+    const element = document.getElementById('invoice-wrapper');
+
     const opt = {
-        margin:       [0.2, 0.2, 0.2, 0.2], // top, left, bottom, right (inch)
+        margin:       0,
         filename:     'invoice.pdf',
         image:        { type: 'jpeg', quality: 1 },
-        html2canvas:  { scale: 3, useCORS: true }, // High quality render
-        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+        html2canvas:  { scale: 3, useCORS: true },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
     html2pdf().set(opt).from(element).save();
 }
 </script>
+
 </body>
 
 </html>
+
 
 
 
