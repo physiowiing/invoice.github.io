@@ -30,7 +30,10 @@
 <body class="bg-gray-100 p-5">
 
     <div class="max-w-3xl mx-auto bg-white p-6 shadow-lg">
-        <button onclick="window.print()" class="bg-green-500 text-white p-2 rounded mb-6">Download PDF</button>
+        <!-- <button onclick="window.print()" class="bg-green-500 text-white p-2 rounded mb-6">Download PDF</button> -->
+        <button onclick="downloadPDF()" class="bg-green-500 text-white p-2 rounded mb-6">
+            Download PDF
+        </button>
 
         <div id="invoice">
 
@@ -105,7 +108,8 @@
                     <hr class="border-gray-300" />
                     <div class="mt-4 mb-4">
                         <div class="text-[#444444] text-right"><strong>Balance</strong></div>
-                        <div class="text-[#444444] text-right text-[20px] font-bold">INR ₹<span id="output-balance-bottom"></span></div>
+                        <div class="text-[#444444] text-right text-[20px] font-bold">INR ₹<span
+                                id="output-balance-bottom"></span></div>
                     </div>
                     <hr class="border-gray-300" />
                 </div>
@@ -144,6 +148,21 @@
             document.getElementById('output-total').innerText = totalAmount.toFixed(2);
             document.getElementById('output-balance').innerText = totalAmount.toFixed(2);
             document.getElementById('output-balance-bottom').innerText = totalAmount.toFixed(2);
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function downloadPDF() {
+            const element = document.getElementById('invoice');
+            const opt = {
+                margin: 0.5,
+                filename: 'invoice.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(element).save();
         }
     </script>
 </body>
