@@ -36,20 +36,7 @@
     Download PDF
 </button>
 
-<!-- html2pdf.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-<script>
- const element = document.getElementById('invoice');
-    const opt = {
-        margin:       0.3, // inch (thoda margin hoga, cut nahi hoga)
-        filename:     'invoice.pdf',
-        image:        { type: 'jpeg', quality: 1 },
-        html2canvas:  { scale: 2, useCORS: true }, // High res
-        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
-    };
-    html2pdf().set(opt).from(element).save();
-</script>
 
         <div id="invoice">
 
@@ -166,9 +153,24 @@
             document.getElementById('output-balance-bottom').innerText = totalAmount.toFixed(2);
         }
     </script>
+<!-- html2pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+ const element = document.getElementById('invoice');
+    const opt = {
+        margin:       0.3, // inch (thoda margin hoga, cut nahi hoga)
+        filename:     'invoice.pdf',
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { scale: 2, useCORS: true }, // High res
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).save();
+</script>
 </body>
 
 </html>
+
 
 
 
