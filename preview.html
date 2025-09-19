@@ -159,22 +159,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
 function downloadPDF() {
-    const element = document.getElementById('invoice');
+    const element = document.getElementById('invoice-wrapper');
+
     const opt = {
-        margin:       0, // inch (thoda margin hoga, cut nahi hoga)
+        margin:       0,
         filename:     'invoice.pdf',
         image:        { type: 'jpeg', quality: 1 },
-        html2canvas:  { scale: 2, useCORS: true }, // High res
-        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+        html2canvas:  { scale: 3, useCORS: true },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
+
     html2pdf().set(opt).from(element).save();
 }
-
 </script>
 
 </body>
 
 </html>
+
 
 
 
