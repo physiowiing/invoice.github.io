@@ -161,7 +161,7 @@
 function downloadPDF() {
     const element = document.getElementById('invoice');
     const opt = {
-        margin:       0.3, // inch (thoda margin hoga, cut nahi hoga)
+        margin:       0, // inch (thoda margin hoga, cut nahi hoga)
         filename:     'invoice.pdf',
         image:        { type: 'jpeg', quality: 1 },
         html2canvas:  { scale: 2, useCORS: true }, // High res
@@ -175,6 +175,7 @@ function downloadPDF() {
 </body>
 
 </html>
+
 
 
 
